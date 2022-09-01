@@ -27,14 +27,14 @@ async def check(userbot, client, link):
         except ValueError:
             return False, "**Invalid Link!**"
         except Exception:
-            return False, "Have you joined the channel?"
+            return False, " Send Invite Link {ONLY CHANNEL} Firstly Or Invalid/Expired Link Link"
     else:
         try:
             chat = str(link.split("/")[-2])
             await client.get_messages(chat, msg_id)
             return True, None
         except Exception:
-            return False, "Maybe bot is banned from the chat, or your link is invalid!"
+            return False, "Maybe bot is banned from the chat, or your link is invalid Or Expied!"
             
 async def get_msg(userbot, client, sender, edit_id, msg_link, i):
     edit = ""
@@ -120,7 +120,7 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i):
             await client.edit_message_text(sender, edit_id, f'Failed to save: `{msg_link}`')
             return 
     else:
-        edit = await client.edit_message_text(sender, edit_id, "Cloning.")
+        edit = await client.edit_message_text(sender, edit_id, "CLONING.")
         chat =  msg_link.split("/")[-2]
         try:
             await client.copy_message(int(sender), chat, msg_id)
